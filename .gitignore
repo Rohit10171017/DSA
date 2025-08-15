@@ -1,0 +1,48 @@
+# Ignore compiled object files, executables, and libraries
+*.o
+*.obj
+*.so
+*.dll
+*.exe
+*.out
+*.a
+*.lib
+
+# Ignore temporary files
+*.tmp
+*.temp
+*.log
+
+# Ignore debugger-related files
+*.dSYM/
+*.stackdump
+
+# Ignore IDE/editor specific files
+.vscode/
+.idea/
+*.suo
+*.user
+*.userossc
+*.sln.docstates
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore build folders
+build/
+bin/
+dist/
+
+# Ignore CMake temporary files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Ignore test outputs
+*.test
+*.result
+
+# Ignore any temporary competitive programming files
+temp/
