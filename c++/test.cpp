@@ -1,37 +1,35 @@
-#include <iostream>
-#include<climits>
-using namespace std;
-
-int main() {
-	// your code goes here
-    int n;
-    cin>>n;
-    int arr[n];
-    for(int i=0;i<n;i++)
+#include<iostream>
+#include<vector>
+#include<string>
+#include<algorithm>
+using namespace std ;
+void subsetduplicate(string s,string t,bool flag)
+{
+    if(s.length()==0)
     {
-        cin>>arr[i];
+        cout<<t<<"\n";
+        return ;
     }
-    int max = INT_MIN;
-    int smax = INT_MIN;
-    for(int i=0;i<n;i++)
+    if(s.length() == 1)
     {
-        if(arr[i]>max)
-        {
-            smax = max;
-            max = arr[i];
-        }
-        else if(arr[i]>smax && arr[i]!=max)
-        {
-            smax = arr[i];
-        }
+        if(flag == true) subsetduplicate(s.substr(1),t+s[0],true);
+        subsetduplicate(s.substr(1),t,true);
     }
-    if(smax != INT_MIN)
+    else if(s[0] == s[1])
     {
-        cout<<max<<" "<<smax;
+        if(flag == true) subsetduplicate(s.substr(1),t+s[0],true);
+        subsetduplicate(s.substr(1),t,false);
     }
-    else 
-    {
-       cout<<max<<endl<<"second maximum cannot be found";
+    else{
+        if(flag == true) subsetduplicate(s.substr(1),t+s[0],true);
+        subsetduplicate(s.substr(1),t,true);
     }
-	return 0;
+}
+int main()
+{
+    string s;
+    cout<<"enetr a string : ";
+    getline(cin,s);
+    sort(s.begin(),s.end());
+    subsetduplicate(s,"",true);
 }
