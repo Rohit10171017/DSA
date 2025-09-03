@@ -1,7 +1,8 @@
 #include<iostream>
 #include<vector>
+#include<algorithm>
 using namespace std;
-void function(vector<int>&v,vector<vector<int>>&ans,vector<int>sub,int x,int i)
+void function(vector<int>&v,vector<vector<int>>&ans,vector<int>&sub,int x,int i)
 {
     if(x < 0) return ;
     else if(x == 0)
@@ -11,9 +12,13 @@ void function(vector<int>&v,vector<vector<int>>&ans,vector<int>sub,int x,int i)
     }
     for(int j=i;j<v.size();j++)
     {
+        if(v[j]>x) break;
+        if(v[i] <= x)
+        {
         sub.push_back(v[j]);
         function(v,ans,sub,x-v[j],j);
         sub.pop_back();
+        }
     }
 }
 int main()
@@ -27,6 +32,7 @@ int main()
     {
         cin>>v[i];
     }
+    sort(v.begin(),v.end());
     int x;
     cout<<"enter a target : ";
     cin>>x;
