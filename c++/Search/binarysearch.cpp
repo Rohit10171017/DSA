@@ -16,7 +16,7 @@ int main()
     cin>>target;
     int low = 0;
     int high = n-1;
-    bool flag = false;
+    int idx;
     while(low<=high)
     {
         int mid = (low + high)/2;
@@ -30,10 +30,7 @@ int main()
         }
         else if(target == arr[mid])
         {
-            flag = true;
-            break;
+            idx = mid;
         }
-    }
-    (flag == true) ? cout<<"target found ": cout<<"target not found";
     return 0;     
 }
