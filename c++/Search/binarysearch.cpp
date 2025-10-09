@@ -32,5 +32,6 @@ int main()
         {
             idx = mid;
         }
+    }
     return 0;     
 }
