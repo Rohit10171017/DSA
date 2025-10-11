@@ -1,21 +1,37 @@
 #include<iostream>
+#include<vector>
+#include<algorithm>
 using namespace std;
-void permutation(string s,string t)
+void subset(vector<int>&v,vector<int>ans,int i)
 {
-    if(s == "")
+    if(i == v.size())
     {
-        cout<<t<<endl;
+        for(int j=0;j<ans.size();j++) 
+        {
+            cout<<ans[j]<<" ";
+        }
+        cout<<endl;
         return ;
     }
-    for(int i=0;i<s.size();i++)
+    ans.push_back(v[i]);
+    subset(v,ans,i+1);
+    ans.pop_back();
+    if(v[i] == v[i+1] && i != v.size()-1)
     {
-        permutation(s.substr(0,i)+s.substr(i+1,s.size()-1-i),t+s[i]);
+        while(v[i] == v[i+1]) i++;
     }
+    subset(v,ans,i+1);
 }
 int main()
 {
-    string s;
-    cout<<"enter a string : ";
-    getline(cin,s);
-    permutation(s,"");
+    int n;
+    cin>>n;
+    vector<int>v(n);
+    for(int i = 0; i < n; i++)
+    {
+        cin>>v[i];
+    }
+    sort(v.begin(),v.end());
+    subset(v,{},0);
+    return 0;
 }

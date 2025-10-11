@@ -1,19 +1,15 @@
 #include<iostream>
-#include<algorithm>
-#include<string>
-#include<vector>
 using namespace std;
-void permutation(string s,string t)
+void perm(string s,string t)
 {
     if(s == "")
     {
-        cout<<t;
-        cout<<endl;
+        cout<<t<<endl;
         return ;
     }
-    for(int i=0;i<s.size();i++)
+    for(int j=0;j<s.size();j++)
     {
-        permutation(s.substr(0,i)+s.substr(i+1,s.length()-i-1),t+s[i]);
+        perm(s.substr(0,j)+s.substr(j+1,s.size()-j-1),t+s[j]);
     }
 }
 int main()
@@ -21,5 +17,5 @@ int main()
     string s;
     cout<<"enter a string : ";
     getline(cin,s);
-    permutation(s,"");
+    perm(s,"");
 }
