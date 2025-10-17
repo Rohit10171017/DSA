@@ -1,21 +1,16 @@
 #include<iostream>
 using namespace std;
-void perm(string s,string t)
+int kthsymbol(int n ,int k)
 {
-    if(s == "")
-    {
-        cout<<t<<endl;
-        return ;
-    }
-    for(int j=0;j<s.size();j++)
-    {
-        perm(s.substr(0,j)+s.substr(j+1,s.size()-j-1),t+s[j]);
-    }
+   
 }
 int main()
 {
-    string s;
-    cout<<"enter a string : ";
-    getline(cin,s);
-    perm(s,"");
+    int n;
+    cout<<"enter no of rows : ";
+    cin>>n;
+    int k ;
+    cout<<"enter position of the element : ";
+    cin>>k;
+    cout<<kthsymbol(n,k);
 }

@@ -14,15 +14,25 @@ using namespace std;
 //     paranthesis(v,t+")",n-1,s-40,m);
 
 // }
-void generate(vector<string>&v,string s,int open,int close,int n)
+void generate(vector<string>&v,string &s,int open,int close,int n)
 {
     if(close == n)
     {
         v.push_back(s);
         return ;
     }
-    if(open<n) generate(v,s+"(",open+1,close,n);
-    if(close<open) generate(v,s+")",open,close+1,n);
+    if(open<n) 
+    {
+        s.push_back('(');
+        generate(v,s,open+1,close,n);
+        s.pop_back();
+    }
+    if(close<open) 
+    {
+        s.push_back(')');
+        generate(v,s,open,close+1,n);
+        s.pop_back();
+    }
 }
 int main()
 {
@@ -31,7 +41,8 @@ int main()
     cin>>n;
     vector<string>v;
     // paranthesis(v,"",2*n,0,40*n);
-    generate(v,"",0,0,n);
+    string s;
+    generate(v,s,0,0,n);
     for(string str : v)
     {
         cout<<str<<endl;
