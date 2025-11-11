@@ -1,28 +1,37 @@
 #include<iostream>
-#include<string>
 using namespace std;
-string countandsay(int n,string t,int j)
-{
-    if(n==1) return "1";
-    if(j == n ) return t;
-    int i = 0;
-    string s="";
-    int c = 1;
-    while(t[i] != '\0')
-    {
-        if(t[i]==t[i+1] && i != t.size()-1) c++;
-        else{
-            s = s + to_string(c) + t[i];
-            c = 1;
-        }
-        i++;
-    }
-    return countandsay(n,s,j+1);
-}
 int main()
 {
     int n;
-    cout<<"enter a number : ";
+    cout<<"enter size of an array : ";
     cin>>n;
-    cout<<countandsay(n,"1",1);
+    int arr[n];
+    cout<<"enter elements of an array(according to the condition)";
+    for(int &ele : arr)
+    {
+        cin>>ele;
+    }
+    int x ;
+    cout<<"enter a element to find its index : ";
+    cin>>x;
+    int l = 0;
+    int h = n-1;
+    while(l <= h)
+    {
+        int mid = (l + h)/2;
+        if((arr[mid] == x && arr[mid] >arr[mid-1]) || mid == 0)
+        {
+            cout<<mid;
+            break;
+        }
+        else if(arr[mid] > x ||(arr[mid] == x && arr[mid] == arr[mid-1]))
+        {
+            h = mid-1;
+        }
+        else if(arr[mid]< x)
+        {
+            l = mid + 1;
+        }
+    }
+    return 0;
 }
