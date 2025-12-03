@@ -62,7 +62,7 @@ int main()
     while(l<=h)
     {
         int mid = (l+h)/2;
-        if(v[mid] < v[mid+1] && v[mid] < v[mid+1])
+        if(v[mid] < v[mid+1] && v[mid] < v[mid-1])
         {
             piv = mid;
             break;
