@@ -1,18 +1,32 @@
 #include<iostream>
+#include<vector>
 using namespace std;
-int stair(int n)
+void arraytriangle(vector<int>&v,int n)
 {
-  if( n == 0 ) return 0;
-  if(n == 1 | n == 2) return n;
-  else return stair(n-1) + stair(n-2);
-
+  if(n==1) 
+  {
+    cout<<v[0]<<endl;
+    return ;
+  }
+  vector<int>temp(n-1);
+  for(int i = 0 ; i < v.size() ; i++)
+  {
+    cout<<v[i]<<" ";
+    if(i < v.size()-1) temp[i] = v[i]+v[i+1];
+  }
+  cout<<endl;
+  arraytriangle(temp,n-1);
 }
 int main()
 {
   int n ;
-  cout<<"Enter no of steps: ";
+  cout<<"enter the size of array : ";
   cin>>n;
-  int ans = stair(n);
-  cout<<ans;
-  return 0;
+  vector<int>v(n);
+  cout<<"Enter elements of an array : ";
+  for(auto &ele : v)
+  {
+    cin>>ele;
+  }
+  arraytriangle(v,n);
 }
