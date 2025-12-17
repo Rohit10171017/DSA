@@ -1,32 +1,46 @@
 #include<iostream>
 #include<vector>
+#include<algorithm>
 using namespace std;
-void arraytriangle(vector<int>&v,int n)
+void nextperm(vector<int>&v)
 {
-  if(n==1) 
-  {
-    cout<<v[0]<<endl;
-    return ;
+  int n = v.size()-1;
+  int x = -1;
+
+for(int i = n ; i >=1 ; i--)
+{
+  if(v[i-1] < v[i]){
+    x = i - 1;
+    break;
   }
-  vector<int>temp(n-1);
-  for(int i = 0 ; i < v.size() ; i++)
+}
+if( x == -1) reverse(v.begin(),v.end());
+else{
+  reverse(v.begin()+x+1,v.end());
+  for(int i = x + 1 ; i <= n ; i++)
   {
-    cout<<v[i]<<" ";
-    if(i < v.size()-1) temp[i] = v[i]+v[i+1];
+    if(v[i] > v[x]) 
+    {
+      swap(v[i],v[x]);
+      break;
+    }
   }
-  cout<<endl;
-  arraytriangle(temp,n-1);
+}
 }
 int main()
 {
-  int n ;
-  cout<<"enter the size of array : ";
+  int n;
+  cout<<"Enter the size of an aray : ";
   cin>>n;
   vector<int>v(n);
-  cout<<"Enter elements of an array : ";
+  cout<<"enter a elements of an array : ";
   for(auto &ele : v)
   {
     cin>>ele;
   }
-  arraytriangle(v,n);
+  nextperm(v);
+  for(auto ele : v)
+  {
+    cout<<ele<<" ";
+  }
 }
